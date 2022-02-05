@@ -4,12 +4,8 @@ import com.koreait.springbootboard.ResultVo;
 import com.koreait.springbootboard.board.model.BoardDto;
 import com.koreait.springbootboard.board.model.BoardVo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import javax.xml.transform.Result;
 import java.util.List;
 
 @RestController
@@ -25,13 +21,9 @@ public class BoardRestController {
         return service.selBoardList(dto);
     }
 
-    @GetMapping("/detail/{iboard}")
-    public BoardVo selBoard(@PathVariable int iboard, BoardDto dto) {
-        return service.selBoard(dto);
+    @GetMapping("/maxpage")
+    public ResultVo selMaxPageVal(BoardDto dto) {
+        return service.selMaxPageVal(dto);
     }
 
-    @GetMapping("/maxpage")
-    public ResultVo selMaxPageVal(BoardDto dto){
-        return service.selMaxPageVal(dto);
-    };
 }

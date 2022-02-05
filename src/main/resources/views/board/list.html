@@ -1,26 +1,26 @@
+<!DOCTYPE html>
 <html lang="ko"
       xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="temp/thymeleaf_layout">
+
 <head>
-    <meta charset="UTF-8">
     <title>리스트</title>
     <script defer th:src="@{/js/board/list.js}"></script>
-
 </head>
 
 <th:block layout:fragment="content">
-    <div id="data" th:with="icate=${param.icategory}" th:data-icategory="${icate}">
-    </div>
+    <!-- param은 th:text, th:with을 제외하고는 바로 접근이 안 되는 것 같음 z-->
+    <div id="data" th:with="icate=${param.icategory}" th:data-icategory="${icate}"></div>
     <div id="board_list">
 
         <table class="table table-hover caption-top">
             <th:block th:each="item : ${@menus}">
-                <caption th:if="${#strings.equals(param.icategory, #strings.toString(item.icategory))}" th:text="${item.nm}">
-                </caption>
+                <caption th:if="${#strings.equals(param.icategory, #strings.toString(item.icategory))}"
+                         th:text="${item.nm}"></caption>
             </th:block>
             <thead>
-            <tr>
+            <tr class="table-secondary">
                 <th>번호</th>
                 <th>제목</th>
                 <th>글쓴이</th>
@@ -29,13 +29,14 @@
             </tr>
             </thead>
             <tbody>
-
             </tbody>
         </table>
+
     </div>
     <div id="page_container">
         <nav>
             <ul class="pagination justify-content-center"></ul>
         </nav>
     </div>
+
 </th:block>
